@@ -1,0 +1,205 @@
+{
+    "api.py": {
+        "imports": [
+            "import os",
+            "import re",
+            "import shutil",
+            "import urllib.request",
+            "from pathlib import Path",
+            "from tempfile import NamedTemporaryFile",
+            "from litellm import completion",
+            "import fitz",
+            "import numpy as np",
+            "import openai",
+            "import tensorflow_hub as hub",
+            "from fastapi import UploadFile",
+            "from lcserve import serving",
+            "from sklearn.neighbors import NearestNeighbors"
+        ],
+        "classes": [
+            {
+                "class_name": "SemanticSearch",
+                "methods": [
+                    {
+                        "name": "__init__",
+                        "parent": "SemanticSearch",
+                        "parameters": "(self)",
+                        "summary": "function body not analyzed",
+                        "children": []
+                    },
+                    {
+                        "name": "fit",
+                        "parent": "SemanticSearch",
+                        "parameters": "(self, data, batch=1000, n_neighbors=5)",
+                        "summary": "function body not analyzed",
+                        "children": []
+                    },
+                    {
+                        "name": "__call__",
+                        "parent": "SemanticSearch",
+                        "parameters": "(self, text, return_data=True)",
+                        "summary": "returns a value; contains conditional statements; contains loops",
+                        "children": []
+                    },
+                    {
+                        "name": "get_text_embedding",
+                        "parent": "SemanticSearch",
+                        "parameters": "(self, texts, batch=1000)",
+                        "summary": "returns a value; contains loops",
+                        "children": []
+                    }
+                ],
+                "children": []
+            }
+        ],
+        "functions": [
+            {
+                "name": "download_pdf",
+                "parent": null,
+                "parameters": "(url, output_path)",
+                "summary": "function body not analyzed",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "preprocess",
+                "parent": null,
+                "parameters": "(text)",
+                "summary": "returns a value",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "pdf_to_text",
+                "parent": null,
+                "parameters": "(path, start_page=1, end_page=None)",
+                "summary": "returns a value; contains conditional statements; contains loops",
+                "children": [],
+                "related_functions": [
+                    "preprocess"
+                ]
+            },
+            {
+                "name": "text_to_chunks",
+                "parent": null,
+                "parameters": "(texts, word_length=150, start_page=1)",
+                "summary": "returns a value; contains conditional statements; contains loops",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "__init__",
+                "parent": null,
+                "parameters": "(self)",
+                "summary": "function body not analyzed",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "fit",
+                "parent": null,
+                "parameters": "(self, data, batch=1000, n_neighbors=5)",
+                "summary": "function body not analyzed",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "__call__",
+                "parent": null,
+                "parameters": "(self, text, return_data=True)",
+                "summary": "returns a value; contains conditional statements; contains loops",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "get_text_embedding",
+                "parent": null,
+                "parameters": "(self, texts, batch=1000)",
+                "summary": "returns a value; contains loops",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "load_recommender",
+                "parent": null,
+                "parameters": "(path, start_page=1)",
+                "summary": "returns a value; contains conditional statements",
+                "children": [],
+                "related_functions": [
+                    "pdf_to_text",
+                    "text_to_chunks"
+                ]
+            },
+            {
+                "name": "generate_text",
+                "parent": null,
+                "parameters": "(openAI_key, prompt, engine=\"text-davinci-003\")",
+                "summary": "returns a value",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "generate_answer",
+                "parent": null,
+                "parameters": "(question, openAI_key)",
+                "summary": "returns a value; contains loops",
+                "children": [],
+                "related_functions": [
+                    "generate_text"
+                ]
+            },
+            {
+                "name": "load_openai_key",
+                "parent": null,
+                "parameters": "()",
+                "summary": "returns a value; contains conditional statements",
+                "children": [],
+                "related_functions": []
+            },
+            {
+                "name": "ask_url",
+                "parent": null,
+                "parameters": "(url: str, question: str)",
+                "summary": "returns a value",
+                "children": [],
+                "related_functions": [
+                    "download_pdf",
+                    "load_recommender",
+                    "load_openai_key",
+                    "generate_answer"
+                ]
+            },
+            {
+                "name": "ask_file",
+                "parent": null,
+                "parameters": "(file: UploadFile, question: str)",
+                "summary": "returns a value",
+                "children": [],
+                "related_functions": [
+                    "load_recommender",
+                    "load_openai_key",
+                    "generate_answer"
+                ]
+            }
+        ]
+    },
+    "app.py": {
+        "imports": [
+            "import json",
+            "from tempfile import _TemporaryFileWrapper",
+            "import gradio as gr",
+            "import requests"
+        ],
+        "classes": [],
+        "functions": [
+            {
+                "name": "ask_api",
+                "parent": null,
+                "parameters": "(\r\n    lcserve_host: str,\r\n    url: str,\r\n    file: _TemporaryFileWrapper,\r\n    question: str,\r\n    openAI_key: str,\r\n)",
+                "summary": "returns a value; contains conditional statements",
+                "children": [],
+                "related_functions": []
+            }
+        ]
+    }
+}
