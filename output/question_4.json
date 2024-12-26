@@ -1,0 +1,4 @@
+{
+    "question": "How many function are related in each of app.py and api.py?",
+    "answer": "In \"api.py\", the function \"pdf_to_text\" is related to \"preprocess\", \"load_recommender\" is related to \"pdf_to_text\" and \"text_to_chunks\", \"generate_answer\" is related to \"generate_text\", \"ask_url\" is related to \"download_pdf\", \"load_recommender\", \"load_openai_key\", and \"generate_answer\", and \"ask_file\" is related to \"load_recommender\", \"load_openai_key\", and \"generate_answer\". So, there are 4 functions in \"api.py\" that have related functions. In \"app.py\", there are no functions with related functions."
+}
