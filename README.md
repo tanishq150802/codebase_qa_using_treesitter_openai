@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # codebase_qa_using_treesitter_openai
-=======
-# Codebase question-answering system
+
 ### Query your codebase using tree-sitter and GPT-4
 
 By: [Tanishq Selot](https://github.com/tanishq150802)  
@@ -10,7 +8,7 @@ Refer to ```setup.py``` for querying your codebase and saving the responses in t
 Edit the ```context``` variable and the list ```questions``` for putting your own questions.
 
 Refer to ```tree_sitter_setup.py``` for the logic used to convert the tree-sitter tree information into
-JSON format as stored in ```AST.json```. ```.env``` contains the OPENAI_API_KEY for accessing gpt-4.
+JSON format as stored in ```AST.json```. ```.env``` should contain the OPENAI_API_KEY for accessing gpt models.
 
 ## Approach
 * Tree sitter is used to parse the code files present in the ```codebase``` directory and create a tree.
@@ -30,4 +28,3 @@ Then run ```setup.py``` to answer your queries and saving the responses in ```ou
 * tree-sitter==0.23.2
 * tree-sitter-python==0.23.4
 * python-dotenv==1.0.1
->>>>>>> abe2116 (Initial commit)
